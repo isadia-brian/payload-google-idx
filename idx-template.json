@@ -1,0 +1,8 @@
+{
+  "name": "Payload CMS template",
+  "description": "The backend to build the modern web.",
+  "categories": ["Web app", "Headless CMS"],
+  "icon": "",
+  "publisher": "Brian Isadia",
+  "params": []
+}
