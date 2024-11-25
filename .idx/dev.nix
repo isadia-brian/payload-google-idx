@@ -8,10 +8,14 @@
   ];
   # Sets environment variables in the workspace
   env = {};
+  services.mongodb ={
+    enable=true;
+  };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      # "vscodevim.vim"
+      "mongodb.mongodb-vscode"
+      "bradlc.vscode-tailwindcss"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
@@ -19,8 +23,14 @@
         pnpm-install = "pnpm install";
         default.openFiles = [ "README.md" ];
       };
-      # To run something each time the workspace is (re)started, use the `onStart` hook
+          # To run something each time the workspace is (re)started, use the `onStart` hook
+       onStart = {
+        start-database = "mongod --port 27017 --fork --logpath ./.idx/database.log --dbpath ./.idx/.data";
+      };
+
+
     };
+
     # Enable previews and customize configuration
     # previews = {
     #   enable = true;
